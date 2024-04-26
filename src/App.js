@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { searchImages } from "./api";
 import "./App.css";
-import ImageList from "./components/ImageList";
-import SearchBar from "./components/SearchBar";
+import ImageList from "./components/images/ImageList";
+import SearchBar from "./components/images/SearchBar";
 import BookCreate from "./components/books/BookCreate";
 import BookList from "./components/books/BookList";
 import useBooksContext from "./hooks/use-books-context";
@@ -95,6 +95,7 @@ function App() {
 				<BookCreate />
 				<h3>Reading List</h3>
 				<BookList />
+				<hr/>
 			</div>
 		</div>
 	);

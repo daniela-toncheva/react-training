@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import BookEdit from "./BookEdit";
 import useBooksContext from "../../hooks/use-books-context";
+import { FaPencil } from "react-icons/fa6";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 function BookShow({ book }) {
 	const [showEdit, setShowEdit] = useState(false);
@@ -35,7 +37,7 @@ function BookShow({ book }) {
 					style={{ width: "40px", color: "black" }}
 					onClick={handleEditClick}
 				>
-					<span>&#9998; Edit</span>
+					<FaPencil />
 				</button>
 				<button
 					type="button"
@@ -43,7 +45,7 @@ function BookShow({ book }) {
 					style={{ width: "40px", color: "black" }}
 					onClick={handleDeleteClick}
 				>
-					<span>&otimes; Delete</span>
+					<RiDeleteBin6Line />
 				</button>
 			</div>
 		</li>
