@@ -1,10 +1,6 @@
 {
   "books": [
     {
-      "title": "Book",
-      "id": 2
-    },
-    {
       "title": "Forest book!",
       "id": 3
     },
@@ -19,6 +15,14 @@
     {
       "title": "Wild",
       "id": 7
+    },
+    {
+      "title": "Standart book",
+      "id": 8
+    },
+    {
+      "title": "The city",
+      "id": 9
     }
   ]
 }

@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { searchImages } from "./api";
 import "./App.css";
 import ImageList from "./components/ImageList";
 import SearchBar from "./components/SearchBar";
 import BookCreate from "./components/books/BookCreate";
 import BookList from "./components/books/BookList";
-import BooksContext from "./context/books";
+import useBooksContext from "./hooks/use-books-context";
 
 function App() {
 	const [images, setImages] = useState([
@@ -73,50 +73,16 @@ function App() {
 			likes: 802,
 		},
 	]);
-	const { fetchBooks } = useContext(BooksContext);
-	// const [books, setBooks] = useState([]);
+	const { fetchBooks } = useBooksContext();
 
 	useEffect(() => {
 		fetchBooks();
 	}, []);
 
-	// const fetchBooks = async () => {
-	// 	const resp = await axios.get(booksUrl);
-	// 	setBooks(resp.data);
-	// };
-
 	const handleSubmit = async (term) => {
 		const result = await searchImages(term);
 		setImages(result);
 	};
-
-	// const createBook = async (title) => {
-	// 	const response = await axios.post(booksUrl, { title });
-	// 	const updatedBooks = [...books, response.data];
-
-	// 	setBooks(updatedBooks);
-	// };
-
-	// const editBookById = async (id, newTitle) => {
-	// 	const url = booksUrl + id;
-	// 	const response = await axios.put(url, {
-	// 		title: newTitle,
-	// 	});
-	// 	const updatedBooks = books.map((book) => {
-	// 		if (book.id == id) {
-	// 			return { ...book, ...response.data };
-	// 		}
-	// 		return book;
-	// 	});
-	// 	setBooks(updatedBooks);
-	// };
-
-	// const deleteBookById = async (id) => {
-	// 	const url = booksUrl + id;
-	// 	const response = await axios.delete(url);
-	// 	const updatedBooks = books.filter((book) => book.id !== id);
-	// 	setBooks(updatedBooks);
-	// };
 
 	return (
 		<div className="d-flex p-1 flex-row">

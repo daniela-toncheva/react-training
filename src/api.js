@@ -1,4 +1,3 @@
-import { queries } from "@testing-library/react";
 import axios from "axios";
 const urlUnsplash = "https://api.unsplash.com/search/photos";
 const dbApi = "http://localhost:3001/";

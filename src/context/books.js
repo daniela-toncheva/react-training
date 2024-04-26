@@ -26,7 +26,7 @@ function Provider({ children }) {
 			title: newTitle,
 		});
 		const updatedBooks = books.map((book) => {
-			if (book.id == id) {
+			if (book.id === id) {
 				return { ...book, ...response.data };
 			}
 			return book;
@@ -36,7 +36,7 @@ function Provider({ children }) {
 
 	const deleteBookById = async (id) => {
 		const url = booksUrl + id;
-		const response = await axios.delete(url);
+		await axios.delete(url);
 		const updatedBooks = books.filter((book) => book.id !== id);
 		setBooks(updatedBooks);
 	};
