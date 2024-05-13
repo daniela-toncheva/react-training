@@ -6,6 +6,7 @@ import SearchBar from "./components/images/SearchBar";
 import BookCreate from "./components/books/BookCreate";
 import BookList from "./components/books/BookList";
 import useBooksContext from "./hooks/use-books-context";
+import Modal from "./elements-exercise/Modal";
 
 function App() {
 	const [images, setImages] = useState([
@@ -74,6 +75,7 @@ function App() {
 		},
 	]);
 	const { fetchBooks } = useBooksContext();
+	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
 		fetchBooks();
@@ -84,6 +86,10 @@ function App() {
 		setImages(result);
 	};
 
+	const handleModalButtonClick = () => {
+		setShowModal(true);
+	}
+
 	return (
 		<div className="d-flex p-1 flex-row">
 			<div className="container text-center">
@@ -92,6 +98,9 @@ function App() {
 				<ImageList images={images} />
 			</div>
 			<div className="container text-center">
+				<button className="btn btn-primary m-2" onClick={handleModalButtonClick}>Show Modal</button>
+				{showModal && <Modal />}
+				<hr/>
 				<BookCreate />
 				<h3>Reading List</h3>
 				<BookList />
