@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-function Modal() {
+function Modal({onClose, children}) {
   return ReactDOM.createPortal(
-    <div className="card position-absolute top-50 start-50 translate-middle">
-			<div className="modal-body">
-				<p>Modal body text goes here.</p>
-				<button type="button" className="btn btn-secondary">
+    <div className="card position-fixed top-50 start-50 translate-middle p-2">
+			<div className="modal-body p-2 d-flex flex-column mb-1">
+				{children}
+        <hr/>
+        <div className="d-flex justify-content-end">
+				<button type="button" className="btn btn-secondary" onClick={onClose}>
 					Close
 				</button>
-				<button type="button" className="btn btn-primary">
-					Save changes
-				</button>
+        </div>
 			</div>
 		</div>,
     document.querySelector('.modal-container')

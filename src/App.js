@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { searchImages } from "./api";
 import "./App.css";
 import ImageList from "./components/images/ImageList";
@@ -88,23 +88,38 @@ function App() {
 
 	const handleModalButtonClick = () => {
 		setShowModal(true);
-	}
+	};
+
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
 
 	return (
-		<div className="d-flex p-1 flex-row">
-			<div className="container text-center">
-				<h3>Images:</h3>
-				<SearchBar onSubmit={handleSubmit} />
-				<ImageList images={images} />
-			</div>
-			<div className="container text-center">
-				<button className="btn btn-primary m-2" onClick={handleModalButtonClick}>Show Modal</button>
-				{showModal && <Modal />}
-				<hr/>
-				<BookCreate />
-				<h3>Reading List</h3>
-				<BookList />
-				<hr/>
+		<div className={showModal ? " bg-secondary bg-gradient" : ""}>
+			<div className="d-flex p-1 flex-row">
+				<div className="container text-center">
+					<h3>Images:</h3>
+					<SearchBar onSubmit={handleSubmit} />
+					<ImageList images={images} />
+				</div>
+				<div className="container text-center">
+					<button
+						className="btn btn-primary m-2"
+						onClick={handleModalButtonClick}
+					>
+						Show Modal
+					</button>
+					{showModal && (
+						<Modal onClose={handleCloseModal}>
+							<p>Some modal text goes here. Click close to accept</p>
+						</Modal>
+					)}
+					<hr />
+					<BookCreate />
+					<h3>Reading List</h3>
+					<BookList />
+					<hr />
+				</div>
 			</div>
 		</div>
 	);
