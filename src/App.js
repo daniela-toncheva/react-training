@@ -7,6 +7,8 @@ import BookCreate from "./components/books/BookCreate";
 import BookList from "./components/books/BookList";
 import useBooksContext from "./hooks/use-books-context";
 import Modal from "./elements-exercise/Modal";
+import Table from "./elements-exercise/Table";
+import { config, fruits, keyFn } from "./data";
 
 function App() {
 	const [images, setImages] = useState([
@@ -96,6 +98,10 @@ function App() {
 
 	return (
 		<div className={showModal ? " bg-secondary bg-gradient" : ""}>
+			<div className="container text-center">
+				<Table data={fruits} config={config} keyFn={keyFn}/>
+			</div>
+			<hr/>
 			<div className="d-flex p-1 flex-row">
 				<div className="container text-center">
 					<h3>Images:</h3>
