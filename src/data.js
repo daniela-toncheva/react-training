@@ -7,7 +7,11 @@ export const fruits = [
 ];
 
 export const config = [
-	{ label: "Fruits", render: (fruit) => fruit.name },
+	{
+		label: "Fruits",
+		render: (fruit) => fruit.name,
+		sortValue: (fruit) => fruit.name,
+	},
 	{
 		label: "Color",
 		render: (fruit) => (
@@ -17,7 +21,11 @@ export const config = [
 			></div>
 		),
 	},
-	{ label: "Score", render: (fruit) => fruit.score },
+	{
+		label: "Score",
+		render: (fruit) => fruit.score,
+		sortValue: (fruit) => fruit.score,
+	},
 ];
 
 export const keyFn = (fruit) => fruit.name;

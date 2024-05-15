@@ -1,19 +1,21 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 function Table({ data, config, keyFn }) {
 	const renderedHeaders = config.map((columnConf) => {
-		return <th key={columnConf.label}>{columnConf.label}</th>;
+		if (columnConf.header) {
+			return (
+				<Fragment key={columnConf.label}> {columnConf.header()} </Fragment>
+			);
+		} else {
+			return <th key={columnConf.label}>{columnConf.label}</th>;
+		}
 	});
 
 	const renderedRows = data.map((rowData) => {
-        const renderedCells = config.map((cell) => {
-            return <td key={cell.label}>{cell.render(rowData)}</td>
-        } )
-		return (
-			<tr key={keyFn(rowData)}>
-                {renderedCells}
-			</tr>
-		);
+		const renderedCells = config.map((cell) => {
+			return <td key={cell.label}>{cell.render(rowData)}</td>;
+		});
+		return <tr key={keyFn(rowData)}>{renderedCells}</tr>;
 	});
 
 	return (
